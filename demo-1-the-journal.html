@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read the Room Book Club</title>
+<meta name="description" content="Read the Room is a book club for women in Birmingham. Monthly picks, real discussion, and a room full of people who get it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E8;
+    --paper-2:#ECE5D6;
+    --ink:#1C1915;
+    --ink-2:#4A443B;
+    --soft:#857B6D;
+    --rule:#CFC6B5;
+    --ox:#7E2A20;
+    --serif:"Newsreader", Georgia, serif;
+    --display:"Instrument Serif", Georgia, serif;
+    --label:"Inter Tight", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .label{font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+  /* Masthead */
+  .topline{border-bottom:1px solid var(--ink);}
+  .topline .wrap{display:flex;justify-content:space-between;padding-top:12px;padding-bottom:10px;color:var(--ink-2)}
+  .masthead{text-align:center;padding:34px 0 22px}
+  .masthead h1{font-family:var(--display);font-weight:400;font-size:clamp(64px,12vw,168px);line-height:.86;letter-spacing:-.02em}
+  .masthead h1 em{font-style:italic;color:var(--ox)}
+  nav.main{border-top:1px solid var(--ink);border-bottom:3px double var(--ink)}
+  nav.main ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap}
+  nav.main li+li{border-left:1px solid var(--rule)}
+  nav.main a{display:block;padding:12px 22px;text-decoration:none}
+  nav.main a:hover{color:var(--ox)}
+
+  /* Opening spread */
+  .opening{display:grid;grid-template-columns:1.55fr 1fr;gap:64px;padding:64px 0 72px;border-bottom:1px solid var(--ink)}
+  .opening h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,5.6vw,80px);line-height:1;letter-spacing:-.01em}
+  .opening h2 em{color:var(--ox)}
+  .opening .lede{font-size:22px;line-height:1.5;color:var(--ink-2);margin:28px 0 34px;max-width:34em}
+  .btn{display:inline-block;font-family:var(--label);font-weight:600;font-size:14px;letter-spacing:.04em;text-decoration:none;padding:15px 26px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:background .2s}
+  .btn:hover{background:var(--ox);border-color:var(--ox)}
+  .textlink{font-style:italic;margin-left:22px;text-underline-offset:4px}
+  .contents{border-left:1px solid var(--rule);padding-left:40px}
+  .contents h3{margin-bottom:14px}
+  .contents ol{list-style:none}
+  .contents li{border-top:1px solid var(--rule)}
+  .contents li:last-child{border-bottom:1px solid var(--rule)}
+  .contents a{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;padding:13px 0;text-decoration:none}
+  .contents a:hover .t{color:var(--ox)}
+  .contents .n{font-family:var(--display);font-size:24px;color:var(--ox)}
+  .contents .t{font-size:20px}
+  .contents .pg{font-family:var(--label);font-size:12px;color:var(--soft)}
+
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}
+  .facts div{padding:26px 0 24px;text-align:center}
+  .facts div+div{border-left:1px solid var(--rule)}
+  .facts b{display:block;font-family:var(--display);font-weight:400;font-size:52px;line-height:1}
+  .facts span{color:var(--soft);display:block;margin-top:8px}
+
+  /* Sections */
+  section{padding:88px 0;border-bottom:1px solid var(--ink)}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:48px}
+  .sec-head .no{font-family:var(--display);font-size:22px;color:var(--ox)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4vw,54px);line-height:1}
+  .sec-head .rule{flex:1;border-top:1px solid var(--rule);transform:translateY(-8px)}
+
+  /* About */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .about p+p{margin-top:1em}
+  .dropcap::first-letter{font-family:var(--display);float:left;font-size:96px;line-height:.8;padding:8px 12px 0 0;color:var(--ox)}
+  .pull{font-family:var(--display);font-style:italic;font-size:clamp(34px,3.6vw,48px);line-height:1.1;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);padding:28px 0}
+  .pull small{display:block;font-family:var(--label);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:18px}
+
+  /* Pick */
+  .pick{display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:center}
+  .cover{aspect-ratio:2/3;background:var(--ox);color:#F1E3D3;padding:30px 28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:14px 14px 0 var(--paper-2),14px 14px 0 1px var(--rule);position:relative}
+  .cover:before{content:"";position:absolute;inset:12px;border:1px solid rgba(241,227,211,.45);pointer-events:none}
+  .cover .t{font-family:var(--display);font-size:46px;line-height:1}
+  .cover .a{font-style:italic;font-size:18px}
+  .pick h3{font-family:var(--display);font-weight:400;font-size:clamp(40px,4.4vw,64px);line-height:1;margin:14px 0 8px}
+  .pick .by{font-style:italic;font-size:22px;color:var(--ink-2)}
+  .pick p{max-width:32em;margin:26px 0 30px}
+  .pick .meta{display:flex;gap:28px;align-items:center;flex-wrap:wrap;color:var(--soft)}
+
+  /* Meet-up */
+  .meet{display:grid;grid-template-columns:auto 1fr auto;gap:56px;align-items:center;border:1px solid var(--ink);padding:44px 52px;background:#FBF8F2}
+  .meet .date{font-family:var(--display);font-size:120px;line-height:.8;color:var(--ox)}
+  .meet .date span{display:block;font-size:30px;font-style:italic;color:var(--ink);margin-top:12px;text-align:center}
+  .meet h3{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.05}
+  .meet p{color:var(--ink-2);margin-top:8px}
+
+  /* Archive */
+  .archive{border-top:1px solid var(--ink)}
+  .archive details{border-bottom:1px solid var(--rule)}
+  .archive summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:150px 1fr 260px 30px;gap:24px;align-items:baseline;padding:24px 0}
+  .archive summary::-webkit-details-marker{display:none}
+  .archive summary .m{color:var(--soft)}
+  .archive summary .bt{font-family:var(--display);font-size:clamp(26px,2.8vw,38px);line-height:1.1}
+  .archive summary .ba{font-style:italic;color:var(--ink-2)}
+  .archive summary .pm{font-family:var(--label);font-size:22px;color:var(--ox);transition:transform .25s;text-align:right}
+  .archive details[open] .pm{transform:rotate(45deg)}
+  .archive summary:hover .bt{color:var(--ox)}
+  .archive .body{display:grid;grid-template-columns:150px 1fr 1fr;gap:24px;padding:0 0 32px}
+  .archive .body p{grid-column:2}
+  .archive .body blockquote{grid-column:3;font-style:italic;color:var(--ox);border-left:1px solid var(--rule);padding-left:22px}
+  .plates{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;margin-top:64px}
+  .plate figcaption{font-style:italic;font-size:16px;color:var(--soft);margin-top:10px}
+  .plate .ph{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(28,25,21,.07) 9px 10px),var(--paper-2);border:1px solid var(--rule);display:flex;align-items:flex-end;padding:14px;color:var(--soft)}
+  .plates .plate:first-child .ph{aspect-ratio:auto;height:100%;min-height:260px}
+
+  /* Voices */
+  .voices{display:grid;grid-template-columns:1.4fr 1fr;gap:0}
+  .voice{padding:0 48px}
+  .voice:first-child{padding-left:0;border-right:1px solid var(--rule);grid-row:span 2}
+  .voice:nth-child(3){border-top:1px solid var(--rule);padding-top:36px;margin-top:36px}
+  .voice q{font-family:var(--display);font-size:30px;line-height:1.2;quotes:"\201C" "\201D"}
+  .voice:first-child q{font-size:clamp(40px,4.4vw,60px);line-height:1.05}
+  .voice cite{display:block;font-style:normal;margin-top:20px}
+  .voice cite .label{color:var(--ox);font-style:normal;margin-left:0}
+  .voice cite span{color:var(--soft);font-style:italic;margin-left:8px}
+
+  /* Notes */
+  .notes{display:grid;grid-template-columns:repeat(3,1fr)}
+  .note{padding:0 32px}
+  .note:first-child{padding-left:0}
+  .note:last-child{padding-right:0}
+  .note+.note{border-left:1px solid var(--rule)}
+  .note .label{color:var(--ox)}
+  .note .d{color:var(--soft);font-style:italic;font-size:16px;margin-top:4px}
+  .note h3{font-family:var(--display);font-weight:400;font-size:32px;line-height:1.05;margin:18px 0 12px}
+  .note p{color:var(--ink-2);font-size:18px}
+  .note .row{display:flex;justify-content:space-between;align-items:center;margin-top:20px;font-size:16px}
+  .note .row a{font-style:italic;text-underline-offset:4px}
+  .copy{background:none;border:0;font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);cursor:pointer;padding:6px 0}
+  .copy:hover{color:var(--ox)}
+  .more{margin-top:48px;text-align:center}
+
+  /* Letter */
+  .letter{background:var(--ink);color:var(--paper);border:0}
+  .letter .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .letter h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1}
+  .letter h2 em{color:#D99A8C}
+  .letter p{color:#C9C0B0;margin-top:18px;max-width:28em}
+  .letter form{display:flex;border-bottom:1px solid var(--paper)}
+  .letter input{flex:1;background:none;border:0;color:var(--paper);font-family:var(--serif);font-size:22px;font-style:italic;padding:14px 0;outline:none;min-width:0}
+  .letter input::placeholder{color:#8E8676}
+  .letter button{background:none;border:0;color:var(--paper);font-family:var(--label);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:0 0 0 20px}
+  .letter small{display:block;margin-top:14px;color:#8E8676;font-size:15px}
+
+  footer{padding:64px 0 40px}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;border-bottom:1px solid var(--rule);padding-bottom:40px}
+  .foot .mark{font-family:var(--display);font-size:56px;line-height:.9}
+  .foot .mark em{color:var(--ox)}
+  .foot p{color:var(--ink-2);margin-top:14px;max-width:22em;font-style:italic}
+  .foot h4{margin-bottom:14px;color:var(--soft)}
+  .foot a{display:block;text-decoration:none;padding:3px 0}
+  .foot a:hover{color:var(--ox)}
+  .fine{display:flex;justify-content:space-between;padding-top:22px;color:var(--soft);font-size:15px}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);font-family:var(--label);font-size:14px;padding:12px 20px;opacity:0;transition:.25s;pointer-events:none}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:900px){
+    body{font-size:18px}
+    .wrap{padding:0 20px}
+    .topline .wrap span:last-child{display:none}
+    nav.main ul{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+    nav.main a{padding:10px 14px;font-size:16px;white-space:nowrap}
+    .contents{display:none}
+    .opening,.about,.pick,.letter .wrap,.voices{grid-template-columns:1fr;gap:40px}
+    .contents{border-left:0;padding-left:0}
+    .facts{grid-template-columns:1fr 1fr}
+    .facts div:nth-child(3){border-left:0}
+    .facts div:nth-child(n+3){border-top:1px solid var(--rule)}
+    section{padding:64px 0}
+    .pick .cover{max-width:280px}
+    .meet{grid-template-columns:1fr;gap:20px;padding:32px 26px}
+    .meet .date{font-size:88px}
+    .meet .date span{text-align:left}
+    .archive summary{grid-template-columns:1fr 24px;gap:4px 12px}
+    .archive summary .m{grid-column:1;order:-1}
+    .archive summary .bt{grid-column:1}
+    .archive summary .ba{grid-column:1}
+    .archive summary .pm{grid-column:2;grid-row:1/4;align-self:center}
+    .archive .body{grid-template-columns:1fr}
+    .archive .body p,.archive .body blockquote{grid-column:1}
+    .plates{grid-template-columns:1fr 1fr}
+    .plates .plate:first-child{grid-column:span 2}
+    .voice,.voice:first-child{padding:0;border:0}
+    .voice+.voice{border-top:1px solid var(--rule);padding-top:32px;margin-top:0}
+    .notes{grid-template-columns:1fr}
+    .note,.note:first-child,.note:last-child{padding:28px 0}
+    .note+.note{border-left:0;border-top:1px solid var(--rule)}
+    .foot{grid-template-columns:1fr}
+    .fine{flex-direction:column;gap:6px}
+    .textlink{display:inline-block;margin:18px 0 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="topline"><div class="wrap label"><span>Birmingham &middot; Est. 2025</span><span>A book club for women who love a good conversation</span></div></div>
+
+<header class="wrap masthead">
+  <h1>Read <em>the</em> Room</h1>
+</header>
+<nav class="main"><ul>
+  <li><a href="#about">About</a></li>
+  <li><a href="#pick">This month</a></li>
+  <li><a href="#meet">Meet-ups</a></li>
+  <li><a href="#archive">The archive</a></li>
+  <li><a href="#voices">Members</a></li>
+  <li><a href="updates.html">Updates</a></li>
+</ul></nav>
+
+<div class="wrap">
+  <div class="opening">
+    <div>
+      <h2>A safe place for storytellers, thinkers, and <em>warm hearts.</em></h2>
+      <p class="lede">Monthly picks, real discussion, and a room full of people who get it. No pressure to have finished the book. Just show up.</p>
+      <a class="btn" href="#meet">Come to the next meet-up</a>
+      <a class="textlink" href="#pick">See this month&rsquo;s pick</a>
+    </div>
+    <aside class="contents">
+      <h3 class="label">In this issue</h3>
+      <ol>
+        <li><a href="#about"><span class="n">i</span><span class="t">Who we are</span><span class="pg">01</span></a></li>
+        <li><a href="#pick"><span class="n">ii</span><span class="t">Currently reading</span><span class="pg">02</span></a></li>
+        <li><a href="#meet"><span class="n">iii</span><span class="t">The next meet-up</span><span class="pg">03</span></a></li>
+        <li><a href="#archive"><span class="n">iv</span><span class="t">Every book so far</span><span class="pg">04</span></a></li>
+        <li><a href="#voices"><span class="n">v</span><span class="t">In members&rsquo; words</span><span class="pg">05</span></a></li>
+        <li><a href="#notes"><span class="n">vi</span><span class="t">Notes from the club</span><span class="pg">06</span></a></li>
+      </ol>
+    </aside>
+  </div>
+  <div class="facts">
+    <div><b>180+</b><span>members</span></div>
+    <div><b>24</b><span>books read</span></div>
+    <div><b>12</b><span>meet-ups a year</span></div>
+    <div><b>4.9</b><span>average rating</span></div>
+  </div>
+</div>
+
+<section id="about"><div class="wrap">
+  <div class="sec-head"><span class="no">01</span><h2>Who we are</h2><span class="rule"></span></div>
+  <div class="about">
+    <div>
+      <p class="dropcap">Read the Room began in 2025 as a handful of friends meeting up to talk about the books they couldn&rsquo;t stop thinking about. It&rsquo;s grown by word of mouth into a proper community, with new faces every month, one book at a time.</p>
+      <p>No pressure to have finished it, no judgment if you didn&rsquo;t. Just good conversation, good company, and better book recommendations than any algorithm.</p>
+    </div>
+    <div class="pull">Every book club should feel like coming home.<small>The whole idea, really</small></div>
+  </div>
+</div></section>
+
+<section id="pick"><div class="wrap">
+  <div class="sec-head"><span class="no">02</span><h2>Currently reading</h2><span class="rule"></span></div>
+  <div class="pick">
+    <div class="cover"><span class="label">September pick</span><div><div class="t">Book Title Here</div></div><div class="a">Author Name</div></div>
+    <div>
+      <span class="label" style="color:var(--ox)">The September pick</span>
+      <h3>Book Title Here</h3>
+      <div class="by">by Author Name</div>
+      <p>A short, spoiler-free blurb about why this month&rsquo;s pick was chosen goes here: what drew the group to it and what to expect from the discussion.</p>
+      <div class="meta"><a class="btn" href="#meet">Join this month&rsquo;s discussion</a><span>Rated 4.8 by members</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="meet"><div class="wrap">
+  <div class="sec-head"><span class="no">03</span><h2>The next meet-up</h2><span class="rule"></span></div>
+  <div class="meet">
+    <div class="date">14<span>October</span></div>
+    <div>
+      <span class="label" style="color:var(--soft)">Monthly discussion night</span>
+      <h3>An evening with the September pick</h3>
+      <p>7:00 PM. The venue is shared when you book. Come whether you finished the book or not.</p>
+    </div>
+    <a class="btn" href="https://www.eventbrite.com/e/REPLACE-WITH-YOUR-EVENTBRITE-EVENT-URL" target="_blank" rel="noopener">Get tickets</a>
+  </div>
+</div></section>
+
+<section id="archive"><div class="wrap">
+  <div class="sec-head"><span class="no">04</span><h2>Every book so far</h2><span class="rule"></span></div>
+  <div class="archive">
+    <details>
+      <summary><span class="m label">August 2026</span><span class="bt">The Seven Husbands of Evelyn Hugo</span><span class="ba">Taylor Jenkins Reid</span><span class="pm">+</span></summary>
+      <div class="body"><p>Our biggest turnout yet. Everyone had a theory about Evelyn by the interval, and the debate carried on well past closing time.</p><blockquote>&ldquo;I did not expect to cry into my wine over a fictional Hollywood starlet, but here we are.&rdquo; Priya</blockquote></div>
+    </details>
+    <details>
+      <summary><span class="m label">June 2026</span><span class="bt">Lessons in Chemistry</span><span class="ba">Bonnie Garmus</span><span class="pm">+</span></summary>
+      <div class="body"><p>A summer rooftop meet-up with iced tea and strong opinions about Elizabeth Zott. Several members left wanting to take up rowing.</p><blockquote>&ldquo;Six-Thirty might be the best character in anything I&rsquo;ve read this year.&rdquo; Maya</blockquote></div>
+    </details>
+    <details>
+      <summary><span class="m label">April 2026</span><span class="bt">Tomorrow, and Tomorrow, and Tomorrow</span><span class="ba">Gabrielle Zevin</span><span class="pm">+</span></summary>
+      <div class="body"><p>A quieter, more reflective night. This one split the room, which made for one of our best discussions yet.</p><blockquote>&ldquo;Genuinely changed how I think about creative partnership.&rdquo; Aisha</blockquote></div>
+    </details>
+    <details>
+      <summary><span class="m label">February 2026</span><span class="bt">Circe</span><span class="ba">Madeline Miller</span><span class="pm">+</span></summary>
+      <div class="body"><p>Our first mythology pick, complete with a homemade Greek-inspired spread from one of our members. We may make this a tradition.</p><blockquote>&ldquo;Made me want to read every myth I half-remember from school again.&rdquo; Priya</blockquote></div>
+    </details>
+  </div>
+  <div class="plates">
+    <figure class="plate"><div class="ph label">Photograph</div><figcaption>Fig. 1. Coffee and conversation before we start.</figcaption></figure>
+    <figure class="plate"><div class="ph label">Photograph</div><figcaption>Fig. 2. The pile of books on the table.</figcaption></figure>
+    <figure class="plate"><div class="ph label">Photograph</div><figcaption>Fig. 3. The whole group, end of the night.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="voices"><div class="wrap">
+  <div class="sec-head"><span class="no">05</span><h2>In members&rsquo; words</h2><span class="rule"></span></div>
+  <div class="voices">
+    <div class="voice"><q>Honestly the best part of my month. I&rsquo;ve read more in the last year than the five before it combined.</q><cite><span class="label">Aisha</span><span>Birmingham</span></cite></div>
+    <div class="voice"><q>Walked in knowing nobody, left with a whole new group of friends who actually read.</q><cite><span class="label">Priya</span><span>Solihull</span></cite></div>
+    <div class="voice"><q>It&rsquo;s the one evening a month I actually feel present. No phones, just books and good people.</q><cite><span class="label">Maya</span><span>Birmingham</span></cite></div>
+  </div>
+</div></section>
+
+<section id="notes"><div class="wrap">
+  <div class="sec-head"><span class="no">06</span><h2>Notes from the club</h2><span class="rule"></span></div>
+  <div class="notes">
+    <article class="note"><span class="label">Community</span><div class="d">September 2026</div><h3>Welcome to new members</h3><p>What to expect at your first meet-up, and how the discussion usually runs.</p><div class="row"><a href="updates.html">Read the note</a><button class="copy" data-title="Welcome to new members">Copy link</button></div></article>
+    <article class="note"><span class="label">Recap</span><div class="d">August 2026</div><h3>August recap</h3><p>How the last discussion night went, and what the group&rsquo;s thinking for next time.</p><div class="row"><a href="updates.html">Read the note</a><button class="copy" data-title="August recap">Copy link</button></div></article>
+    <article class="note"><span class="label">Book selection</span><div class="d">July 2026</div><h3>Summer reading list</h3><p>A few extra picks for anyone wanting more between meet-ups.</p><div class="row"><a href="updates.html">Read the note</a><button class="copy" data-title="Summer reading list">Copy link</button></div></article>
+  </div>
+  <div class="more"><a class="textlink" style="margin:0" href="updates.html">All updates from the club</a></div>
+</div></section>
+
+<section class="letter" id="letter"><div class="wrap">
+  <div>
+    <span class="label" style="color:#8E8676">The monthly letter</span>
+    <h2 style="margin-top:14px">Never miss <em>a chapter.</em></h2>
+    <p>The month&rsquo;s pick, event dates, and a few good recommendations, straight to your inbox once a month.</p>
+  </div>
+  <div>
+    <form id="letterForm"><input type="email" required placeholder="your email address" aria-label="Email address"><button type="submit">Subscribe</button></form>
+    <small>We&rsquo;ll never share your email. Unsubscribe any time.</small>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div><div class="mark">Read <em>the</em> Room</div><p>A safe place for storytellers, thinkers, and warm hearts. Est. 2025.</p></div>
+    <div><h4 class="label">Find us</h4><a href="https://instagram.com/readtheroombookclub" target="_blank" rel="noopener">Instagram</a><a href="https://facebook.com/groups/readtheroombookclub" target="_blank" rel="noopener">Facebook group</a><a href="https://tiktok.com/@readtheroombookclub" target="_blank" rel="noopener">TikTok</a></div>
+    <div><h4 class="label">Say hello</h4><a href="mailto:hello@readtheroombookclub.com">hello@readtheroombookclub.com</a><a href="updates.html">Updates</a><a href="#meet">Tickets</a></div>
+  </div>
+  <div class="fine"><span>&copy; 2026 Read the Room Book Club</span><span>Birmingham &amp; Solihull</span></div>
+</div></footer>
+
+<div class="toast" id="toast"></div>
+<script>
+  const toast = document.getElementById('toast');
+  let t;
+  function say(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('show'), 2400); }
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+    const url = location.origin + '/updates.html';
+    const done = () => say('Link to “' + b.dataset.title + '” copied');
+    navigator.clipboard ? navigator.clipboard.writeText(url).then(done, done) : done();
+  }));
+  document.getElementById('letterForm').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); say('Thank you. See you in your inbox.'); });
+</script>
+</body>
+</html>
